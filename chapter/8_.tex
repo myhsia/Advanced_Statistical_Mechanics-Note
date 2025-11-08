@@ -1,0 +1,155 @@
+\chapter{Non-equilibirum Statistic Physics}
+
+\section{Boltzmann integral ODE}
+
+At the equilibirum state, we have a distribution function, aka a function of the energy that independent from the time
+\begin{equation}
+  f_0 = f_0(\bm r) = f_0(E)
+\end{equation}
+which only depends on $r$ and $E$.
+\begin{equation}
+  f_0 = \frac1{\upe^{\beta E} \pm 1} \xrightarrow{Non-equilibirum}
+  f(\bm r, \bm v, t)
+\end{equation}
+This is the Boltzmann equation for the classical short-term interaction thin gas.
+\begin{enumext}
+  \item Classical: $\lambda_T \ll |\overline{\delta r}|$,
+  $\lambda_T = \frac h{(2\pi mk_BT)^{1/2}}$ is the high-temperature wavelength.
+  The gas under the standard state
+  ($\qty0\degreeCelsius$, $\qty1{atm}$).
+  For the Argon: $n = \qty{2.7e19}{\cm^{-3}}$, $m \approx \qty{6.7e-23}\g$.
+  Then
+  \[
+    \lambda_T = \frac{h}{\sqrt{2\pi mk_BT}} \sim \qty{0.17e-8}\cm, \qq{and}
+    \frac{\overline{\delta r}}{\lambda_T} \approxeq 190.
+  \]
+  \item Thin and Short-term force $\overline{\delta r} \gg d$.
+  Most of the gas molecules are free most time.
+  Separate the ``hit'' and the ``motion'':
+  There is no motion when hitting, or there will be no hitting when moving.
+  \[
+    \overline{\delta r} \approxeq \qty{3.3e-7}\cm, \quad
+    m \sim \qty{6.7e-23}\g, \quad
+    \lambda_T = \frac{h}{\sqrt{2\pi mk_BT}} \approxeq \qty{0.17e-8}\cm
+  \]
+  \item Three-body hitting can be omitted
+  
+  Taking another simplification
+  \begin{enumext}
+    \item Omit the structure of molecules, take the rigid-sphere model to instead the Van der Waals force.
+    \item There's no relation between the velocities of two hitting molecules.
+  \end{enumext}
+\end{enumext}
+To derive the evolution of $f(\bm r, \bm v, t)$
+\[
+  f(\bm r, \bm v, t) \d^3\bm r \d^3 \bm v
+\]
+is the average number of moleculese around the volume unit in the phase
+($\bm r$, $\bm v$).
+From $t \to t + \d t$
+\[
+  \frac1{\d t} [f(\bm r, \bm v, t + \d t) - f(\bm r, \bm v, t + \d t)]
+  \d^3\bm r \d^3\bm v = \pdv ft \d^3\bm r \d^3\bm v
+\]
+where $\pdv ft = \ab(\pdv ft)_d + \ab(\pdv ft)_c$: d stands for the drift,
+and c stands for the collision.
+
+\subsection{Derivation of the drift term}
+
+Since
+\[
+  \d f = \ab[f(\bm r + \dot{\bm r} \d t, \bm v + d\bm v, t + \d t)
+            -f(\bm r, \bm v, t)] \d t = 0
+\]
+then,
+\[
+  \odv ft = \ab(\pdv ft)_d + \sum_i \ab(\dot x_i \pdv f{\dot x_i}
++ \dot v_i \pdv f{v_i}) = 0
+\]
+So, the drift term
+\[
+  \ab(\pdv ft)_d = -\bm r \cdot \pdv fr - \bm r \cdot \pdv f{\bm r}
+= -\pdv*{\bm rf}{\bm r} - \pdv*{\bm vf}{\bm v}
+\]
+
+\subsection{Derivation of the collision term}
+
+To derive the collision term, consider the collision between two particles
+\begin{gather*}
+  m_1 \bm v_1 + m_2 \bm v_2 = m_1 \bm v_1' + m_2 \bm v_2'\\
+  \frac12m_1 v_1^2 + \frac12m_2 v_2^2 = 
+  \frac12m_1 v_1'^2 + \frac12m_2 v_2'^2
+\end{gather*}
+Since at the normal dirction, $v_{1_\bot}' = v_{1_\bot}$.
+Then the bound condition
+\[
+  \bm v_1' - \bm v_1 = \lambda_1 \bm n, \qq{and}
+  \bm v_2' - \bm v_2 = \lambda_2 \bm n
+\]
+For a given $\bm n$, we can solve
+\begin{gather*}
+  \bm v_1' = \bm v_1 + \frac{2m_2}{m_1 + m_2} [(\bm v_2 - \bm v_1) \cdot \bm n] \bm n\\
+  \bm v_2' = \bm v_12 - \frac{2m_1}{m_1 + m_2} [(\bm v_2 - \bm v_1) \cdot \bm n] \bm n
+\end{gather*}
+Then, we have
+\[
+  \bm v_2' - \bm v_1' = \bm v_2 - \bm v_1' - 2[(\bm v_2 - \bm v_1) \cdot \bm n] \bm n, \quad
+  (\bm v_2' - \bm v_1')^2 = (\bm v_2 - \bm v_1)^2, \quad
+  v_{12}'^2 = v_{12}^2.
+\]
+To calculate $\ab(\pdv ft)_c$
+\[
+  f_i = f(\bm r, \bm v_i, t), \quad f_i'(\bm r, \bm v_i', t)
+\]
+$\Delta f_1^{(t)}$ is the collision in the $\d^3\bm r$ space during the $\d t$ time. Then,
+\[
+  \ab(\pdv{f_1}t)_c \d t \d^3\bm r \d^3\bm r_1
+= \Delta f_1^{(+)} - \Delta f_1^{(-)}
+\]
+When the two molecules collide, if collide with the $m_2$ molecule with the
+centre of $\bm r_2$ within the volume unit of $\d^3\bm r_2$, then, the collision
+direction will be limited in the cubic angle $\d\Omega$ with the normal vector $\bm n$.
+
+Then, it must be limited in a cylinder with height $v_{12} \cos\theta\d t$ and
+with the lower square $r_{12}^2\d\Omega$.
+The volume of the cylinder is $r_{12}^2 \d\Omega v_{12} \cos\theta\d t$,
+where includes the number of molecules with $\d^3v_{12}$
+\[
+  (f_2\d^3r_2) r_{12}I^2 \d\Omega v_{12} \cos\theta \d t
+\]
+Multiply the number of molecules $m$
+\[
+  (f_1 \d^3\bm r \d^3\bm v_1)(f_2 \d^3r_2) r_{12} \d\Omega v_{12}\cos\theta \d t
+\]
+equal to the number of collisions between molecules in $\d^3\bm r \d^3\bm v_1$
+and molecules in $\d^3\bm r_2$ within the $\d\Omega$ direction during time
+$\d t$ is equal to the number of collisions between molecules in
+$\d^3\bm r \d^3\bm v_1$ and molecules in $\d^3\bm r_2$ within the domega
+direction.
+
+$\delta f_1^{(-)}$ enable the decrease of molecules within $\d^3\bm v_1$:
+$(\bm v_1, \bm v_2) \to (\bm v_1', \bm v_2')$
+\[
+  \delta f_1^{(+)} = \ab[f_1' f_2' \lambda_{12}' \d\Omega' \d^3\bm v_2']
+  \d t \d^3\bm r_1 \d^3 \bm v_1'
+\]
+with $(\bm v_1', \bm v_2', -\bm n) \to (\bm v_1, \bm v_2)$, and the transformation
+\[
+  \d^3 \bm v_1' \d^3\bm v_2' = \d^3v_1 \d^3\bm v_2
+  \begin{vmatrix}
+    \pdv{v_1}{v_1'} & \pdv{v_2}{v_1'}\\
+    \pdv{v_1}{v_2'} & \pdv{v_2}{v_2'}
+  \end{vmatrix}.
+\]
+Then,
+\[
+  \ab(\pdv ft)_c \d t \d^3\bm r_1 \d^3\bm v_1 = \Delta f_1^{(+)} - \Delta f_1^{(-)}
+  = \int [(f_1'f_2' - f_1f_2) \d^3\bm v_2 \lambda_{12} \d\Omega] \d t \d^3\bm v_1 \d^3\bm v_1
+\]
+\[
+  \pdv ft - \ab(\pdv ft)_d = \ab(\pdv ft)_c
+\]
+\[
+  \pdv ft + \bm v \cdot \ab(\pdv fr) + \bm g \cdot \pdv f{\bm v}
+= \int(f_v' f_w' - f_vf_w)  \lambda \d^3 \bm\omega \d\Omega
+\]
