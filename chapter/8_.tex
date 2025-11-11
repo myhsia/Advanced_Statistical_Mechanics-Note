@@ -153,3 +153,358 @@ Then,
   \pdv ft + \bm v \cdot \ab(\pdv fr) + \bm g \cdot \pdv f{\bm v}
 = \int(f_v' f_w' - f_vf_w)  \lambda \d^3 \bm\omega \d\Omega
 \]
+
+\section{$H$-theomre, $H$-function and entropy}
+
+The Entropy
+\begin{equation}
+  S = -\sum_i p_i \ln p_i
+\end{equation}
+The $H$-function
+\begin{equation}
+  H = \int f(\bm r, \bm v, t) \ln f(\bm r, \bm v, t) \d^3\bm v \d^3\bm r
+\end{equation}
+The gas at the equilibirum state
+\[
+  n = N/V
+\]
+The Maxwell distribution
+\begin{equation}
+  f = n\ab(\frac m{2\pi k_BT})^{3/2} \exp\ab(-\frac{mv^2}{2k_BT})
+\end{equation}
+Then, the $H$-function becomes
+\begin{equation}
+  H = \int f\ab[\ln n + \frac32\ln\frac m{2\pi k_BT} - \frac{mv^2}{2k_BT}]
+      \d^3\bm r \d^3\bm v
+\end{equation}
+where the integral
+\[
+  \int f \d^3\bm r \d^3\bm v = n, \quad
+  \frac1n\int\frac{mv^2}{2} f\d^3\bm v = \frac32k_BT
+\]
+The entropy of single-atom ideal gas
+\[
+  S = Nk_B\ab[\ln\frac VN + \frac32\ln T + \frac52 + \frac32\ln\ab(\frac{2\pi mk_B}{h^2})]
+= -k_BH + C
+\]
+Use the Boltzmann equation to derive the $H$-theorem
+\begin{equation}
+  \odv HT \leq 0
+\end{equation}
+The time derivative to $H$
+\begin{align*}
+  \odv HT & = \int \ab(\pdv ft \ln F + f \cdot \frac1f) \d^3\bm r \d^3\bm v
+  = \int (1 + \ln f) \pdv ft \d^3\bm r \d^3\bm v\\
+& = -\int (1 + \ln f) \ab(\bm v \cdot \pdv f{\bm r}) \d^3\bm r \d^3\bm v
+  -\int (1 + \ln f)(\bm q \cdot \pdv f{\bm v}) \d^3\bm r \d^3\bm v
+  -\int (1 + \ln f)(f_1f_2 - f_1'f_2') \d^3\bm v\d^3\bm v'
+    \Lambda \d\Omega \d^3\bm r
+\end{align*}
+The first term
+\[
+  \nabla \cdot(\bm v f\ln f) = \bm v(1 + \ln f) \pdv f{\bm r}
+\]
+\[
+  \int \d^3\bm r \nabla \cdot (\bm v f \ln f)
+= \oiint \bm n \cdot (\bm v f - \ln f) \d\Sigma = 0
+\]
+The second term $\pdv*{\bm q}{\bm v} = 0$
+\[
+  \int\pdv*{\bm q f\ln f}{\bm v} \d^3\bm v
+= \oiint \d\bm S_v \cdot \bm q f \ln f
+\]
+when $v \to \infty$, $ f(v)\big|_{v\to\infty} = 0$.
+The third term: $1 \leftrightarrow 2$,
+\[
+  \odv HT = -\int (1 + \ln f_2)(f_1f_2 - f_1'f_2') \d^3\bm v_1 \d^3\bm r_2
+  \Lambda \d\omega \d^3\bm r
+\]
+Combine and then half
+\[
+  \odv Ht = -\frac12 \int (2 + \ln(f_1f_2)) (f_1f_2 - f_1'f_2') \d(\cdots)
+\]
+$v_{1,2}' \leftrightarrow v_{1,2}$, we have
+\[
+  \odv Ht = -\frac12 \int (2 + \ln (f_2'f_1;)) (f_1'f_2' - f_1f_2) \d(\cdots)
+= -\frac14 \underbrace{
+    \ab(\ln(f_1f_2) - \ln(f_1'f_2^2)) (f_1f_1 - f_1'f_2') \d(\cdots)}_{\geq 0}
+\]
+Then, $\odv Ht \leq 0$, $\odv St \geq 0$.
+When $f_1f_2 = f_1'f_2'$ (Detailed equilibrium condition), they equal to zero.
+
+\section{Application of Boltzmann Equation}
+
+The relaxation time approximation
+\begin{equation}
+  \ab(\pdv ft)_c = -\frac{f - f^{(0)}}{\tau}
+\end{equation}
+where $\tau$ is the relaxation time that tends to equilibirum, independent of
+$\bm r$. Assum $f$ is also independent of $\bm r$.
+Without the external force,
+\[
+  \pdv ft = -\frac{f - f^{(0)}}{t}
+\]
+Then, we have
+\begin{gather*}
+  \frac{\d(f - f^{(0)})}{f - f^{(0)}} = -\frac{\d t}{\tau},\\
+  f(\bm v) - f^{(0)}(\bm v) = [f(\bm v, 0) - f^{(0)}(\bm v)] \upe^{-t/\tau}
+\end{gather*}
+$\tau$ is the time that required by tending to equilibirum.
+In the free electon gas,
+\[
+  f^{(0)}(\bm p) = \frac1{\upe^{(\epsilon(p) - \mu)/k_BT} + 1}
+\]
+and the Fermi energy $\epsilon(p) = \frac{p^2}{2m}$.
+
+In the unit volume, the average electron number that with in the momentum range
+$\d^3\bm p$ is $2\frac{\d^3\bm p}{h^3} f^{(0)}$.
+
+The Boltzmann equation
+\[
+  \pdv ft + \frac{\bm p}{m} \cdot \pdv f{\bm r} + \bm F \cdot \pdv f{\bm p}
+= -\frac{f - f^{(0)}}{\tau}
+\]
+where $\bm F = -e\bm E$, i.e., the ecurrent is a uniform and eternal
+\[
+  \pdv ft = 0, \quad \nabla f = 0, -e\bm E \cdot \pdv f{\bm p} = -\frac{f - f^{(0)}}{\tau}
+\]
+where $f = f^{(0)} + f^{(1) + \cdots}$, and we keep the first order
+\[
+  e\bm E \cdot \pdv{f^{(0)}}{\bm p} = \frac{f^{(1)}}{\tau} \quad
+  f^{(1)} = e\tau\bm E \cdot \bm v \pdv{f^{(0)}}E
+\]
+Hence,
+\[
+  f \approxeq f^{(0)} + e\tau \bm E \cdot \bm v \pdv{f^{(0)}}\epsilon
+  = f^{(0)}(\epsilon + e\tau\bm E \cdot \bm v)
+\]
+where
+\[
+  \pdv{f^{(0)}}{\bm p} = \pdv{f^{(0)}}\epsilon  \pdv\epsilon\beta
+= \pdv{f^{(0)}}\epsilon \bm v
+\]
+The $\bm E$ patt through $\d\bm A$ perpendicularly, hence
+\[
+  \int J_e \d t \d A = e\int v_x \d t \d A f\frac{2\d^3\bm p}{h^3}
+\]
+where
+\[
+  J_e = nev_x = \frac{2\d^3\bm p}{h^3} f ev_x
+= 2e\int v_x(\cancel{f^{(0)}} + f^{(1)}) \frac{\d^3\bm p}{h^3}
+\]
+and we have
+\[
+  v_p = \frac km, \qq{and} f^{(0)}(v_x) = f^{(0)}(-v_x)
+\]
+Now, handel $\d^3\bm p$
+\[
+  \d^3\bm p = p^2\d p \int \d\theta \sin\theta\d\varphi
+= 2m\epsilon \d(\sqrt{2m}\sqrt\epsilon) \cdot 4\pi
+= \frac{4\pi(2m)^{3/2}}{2} \epsilon^{1/2} \d\epsilon
+\]
+Substitute it into $J_e$
+\[
+  J_e = 2eEt \int v_x^2 \pdv{f^{(0)}}\epsilon \frac{\d^3\bm p}{h^3}
+= e^2 E\tau, \quad
+  \int v_x^2 \pdv{f^{(0)}}\epsilon D(\epsilon) \d\epsilon
+\]
+where
+\[
+  D(\epsilon) = 4\pi \frac{(2m)^{3/2}}{h^3} \epsilon^{1/2}
+\]
+Finally,
+\[
+  J_e = e^2E\int \tau \frac{v^3}{3} \pdv{f^{(0)}}t D(\epsilon) \d\epsilon
+\]
+Around $T \sim 0$, $f^{(0)} = \theta(\epsilon - \mu)$. Then,
+\[
+  J = \frac{2e^2t}{3m} \mu D(\mu) E, \quad
+  n = \int_0^\mu D(\epsilon) \d\epsilon = \frac23 \mu D(\mu)
+\]
+We can use it to calculate the conductivity,
+\[
+  J_e = \frac{ne^2\tau}{m} E = \sigma E, \qq{where} \sigma = \frac{ne\tau}{m}
+\]
+The force
+\begin{equation}
+  \bm F = -e\bm E - \frac ec \bm v \times \bm B
+\end{equation}
+where $\bm v = (v_x, v_y)$, $v = v_x + \iu v_y$.
+The stability
+\[
+  \pdv ft + \bm v \cdot \nabla f = 0
+= -\frac{\bm F}{m} \cdot \pdv f{\bm v} + \ab(\pdv ft)_c
+\]
+The derivative
+\[
+  0 = \odv{\braket<v>}t
+    = -\frac{eE}{m} + \iu\omega_c \braket<v> - \frac{\braket<v>}{\tau},
+  \qq{where}
+  \braket<v> = -\frac{eE/m}{1 - \iu\omega_c\tau}
+\]
+Substitute $E = E_x + \iu E_y$, $\omega_c = \frac{eB}{mc}$,
+the current density
+\[
+  \bm j = \mathbf \sigma \cdot \bm E =
+  \begin{pmatrix}
+    \sigma_{xx} & \sigma_{xy}\\
+    \sigma_{yx} & \sigma_{yy}
+  \end{pmatrix}
+  \begin{pmatrix}
+    E_x \\ E_y
+  \end{pmatrix} = j_x + \iu j_y
+\]
+So, we have the elements of the conductivity matrix
+\[
+  \sigma_{xx} = \sigma_{yy} = \frac{\sigma_0}{1 + \omega^2\tau^2}, \quad
+  \sigma_{xy} = -\sigma_{yx} = -\frac{nce}{B} - \frac{\sigma_{xx}}{\omega_c\tau}
+\]
+where $\sigma_0 = \frac{ne^2\tau}{m}$.
+
+\section{Fluctuation Phenomenon: Themoral Variables}
+
+\subsection{Regrex System}
+
+The fluctuation of energy
+\begin{equation}
+  \frac{\sqrt{\braket<(E - \braket<E>)^2>}}{\braket<E>} \sim \frac1{\sqrt N},
+  \qq{and} n = \frac NV \qq{finite}
+\end{equation}
+are all the fluctuations corresponding the microscope variable.
+
+\subsection{Quasi-Themoral Theory (Smoluchowski-Einstein Method)}
+
+
+The theromal entropy
+\begin{equation}
+  \bar S = k_B \ln W_{\max} \qq{(theromal probability)}
+\end{equation}
+where $W_{\max} = \upe^{\bar S/k_B}$.
+
+The differ from equilibirum
+\[
+  W = \upe^{S/k_B} = W_{\max} \upe^{(S - \bar S)/k_B}
+    = W_{\max} \upe^{\Delta S/k_B}
+\]
+\begin{enumext}
+  \item For dependent system, $\Delta E = 0$, $\Delta V = 0$.
+  \item For regrex system,
+  $\Delta E + \Delta E_e = 0$,
+  $\Delta V + \Delta V_e = 0$.
+  \begin{align*}
+    W_T & = W_{\max} \upe^{(\Delta S + \Delta S_e)/k_B}
+  = W_{\max} \upe^{\ab(\Delta S + \frac{\Delta E_e + pV_e}{T})/k_B}\\ &
+  = W_{\max} \upe^{(\Delta S T - \Delta E - p\Delta V)/(k_BT)}
+  = W_{\max} \upe^{-(\Delta F + p\Delta V)/(k_BT)}
+  \end{align*}
+\end{enumext}
+The free energy
+\begin{equation}
+  \Delta F = \underbrace{\ab(\pdv FV)_T}_{-p} \delta V
+  + \frac12 \underbrace{\ab(\pdv[2]FV)_T}_{-\pdv p/V} (\Delta V)^2
+  + \cdots
+\end{equation}
+Then,
+\begin{equation}
+  W_T \approxeq W_{\max} \exp\ab[\frac1{2k_BT} \ab(\pdv pV)_T (\Delta V)^2]
+\end{equation}
+The probability of the quasi-themoral in regrex system
+\begin{equation}
+  \braket<(\Delta A)^2>
+= \frac{\int (\Delta A^2) W \d(\Delta A)}{\int W\d(\Delta A)}
+\end{equation}
+\begin{example}
+  Calculate $\braket<(\Delta V)^2>$.
+  \begin{align*}
+  & \frac{\int_{-\infty}^\infty (\Delta V)^2
+      \exp\ab[\frac1{2k_BT}\ab(\pdv PV)_T(\Delta V)^2] \d(\Delta V)}
+    {\text{normalization factor}}\\
+= & \frac1{\int \cdots} \int_{-\infty}^\infty (\Delta V)^2
+    \frac{k_BT}{(\pdv p/V)_T}
+    \frac1{\Delta V} \d\ab\{\exp\ab[\frac1{2k_BT} (\pdv p/V)_T (\Delta V)^2]\}\\
+= & \frac1{\int \cdots} \frac{\Delta V(k_BT)}{(\pdv p/V)_T}
+    \exp\ab[-\frac1{2k_BT}\ab|\ab(\pdv pV)_T| (\Delta V)^2]
+    \bigg|_{-\infty}^\infty - k_BT \ab(\pdv Vp)_T = -k_BT\ab(\pdv Vp)_T
+  \end{align*}
+  Then, we have
+  \[
+    \frac{\braket<(\Delta V)^2>}{V^2} = -\frac{k_BT}{V^2} \ab(\pdv Vp)_T
+  \]
+  If the mass of the system $M = \text{Const}$, i.e., $M = pV$ is fixed. Then,
+  \[
+    \Delta M = \Delta\rho V + \rho\Delta V = 0 \Rightarrow
+    \frac{\Delta\rho}{\rho} = -\frac{\Delta V}{V}, \quad
+    \frac{\braket<(\Delta\rho)^2>}{\rho^2} = \frac{\braket<(\Delta V)^2>}{V^2}
+  = -k_BT \ab(\pdv Vp)
+  \]
+  $\rho = N/V$, if $V$ is fixed, then $\Delta \rho \propto \Delta N$.
+  \begin{gather*}
+    \braket*<\ab(\frac{\Delta N}{N})^2> =
+    \braket*<\ab(\frac{\Delta \rho}{\rho})^2> = -\frac{k_BT}{V^2} \ab(\pdv Vp)_T\\
+    \Delta\rho = \frac{\Delta N}{V} - \frac{N\Delta V}{V^2}\\
+    (\Delta\rho)^2 = \ab(\frac{\Delta N}{V})^2 - \frac{2\Delta N\Delta V}{V^3} + \frac{N^2(\Delta V)^2}{V^4}\\
+    \braket<(\Delta \rho)^2> = \braket<\ab(\frac{\Delta N}{V})^2> + \frac{N^2\braket<(\Delta V)^2>}{V^4}\\
+    \frac{\braket<(\Delta\rho)^2>}{N^2} =
+    \frac{\braket<(\Delta N)^2>}{N^2} + \frac{\braket<(\Delta N)^2>}{N^2}
+  = 2\braket<\ab(\frac{\Delta N}{N})^2>
+  \end{gather*}
+  The critical point
+  \[
+    \ab(\pdv pV)_T = \ab(\pdv[2]pV)_T = 0
+  \]
+  Then,
+  \[
+    \Delta F = -p\Delta V - \frac1{4!} \ab(\pdv[3]pV)_T (\Delta V)^4 + \cdots
+  \]
+  \[
+    W = W_{\max} \exp(-\alpha x^4), \quad x = \Delta V
+  \]
+  \[
+    \braket<(\Delta V)^2>
+  = \frac{\int_0^\infty x^2 \upe^{-\alpha x^4} \d x}
+      {\int_0^\infty \upe^{-\alpha x^4} \d x}
+  = \frac{\Gamma(\frac34)}{\Gamma(\frac14)} \frac1{\sqrt\alpha}
+  = 0.338\frac1{\sqrt\alpha}
+  \]
+\end{example}
+
+\subsection{Vande vars Gas}
+
+\[
+  p_c = \frac a{27b^2}, \quad v_c = 3b, \quad T_c = \frac{8a}{27bR}
+\]
+Substitute them into the ideal gas formula
+\[
+  \ab(p + \frac a{v^2}) (v - b) = RT, \quad
+  p = \frac{3RT}{3V - V_c} - \frac{9RT_cv_c}{8v^2}, \quad
+  V = \frac N{N_a} \sigma, \quad N_a = \num{6.02e23}
+\]
+Then,
+\[
+  p = \frac{3Nk_BT}{3V - V_c} - \frac{9N k_BT_cV_c}{8V^2}
+\]
+The derivatives
+\begin{gather*}
+  \ab(\pdv[3]pV)_T = -\frac{486Nk_BT}{(3V - V_c)^4} + \frac{27Nk_BT_cV_c}{V^5}\\
+  \ab(\pdv[3]pV)_{T_c} = -\frac{27Nk_BT_c}{8V_c^4}
+\end{gather*}
+Finally, we have
+\[
+  \ab(\frac{\Delta V}V)_c^2 = 0.338\ab[-\frac{V_c^4}{24kT_c} \ab(\pdv[3]pV)_c]^{-1/2}
+= 0.901/\sqrt N
+\]
+
+\begin{example}[The sky is blue (When the air is clean, not frog / haze)]
+  The magnitude of the scatter of light
+  \[
+    I \propto \frac1{\lambda^4} \frac{\braket<(\Delta\rho)^2>}{\rho^2}
+  \]
+\end{example}
+
+\begin{example}[Liquid]
+  \[
+    \frac{\braket<I>}{V} \propto
+    \frac1{\lambda^4} V \ab[-\frac{V^4}{24k_BT}\ab(\pdv[3]pV)_T]^{1/2}
+  \propto \frac1{\sqrt N}
+  \]
+\end{example}
